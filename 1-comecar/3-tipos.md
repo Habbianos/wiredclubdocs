@@ -7,14 +7,14 @@ Os Ativadores são representados pelas caixas **marrons**. Eles monitoram o quar
 
 | Ativador | Descrição |
 | :--- | :--- |
-| **Habbo anda no Mobi** | Ativado quando um usuário, bot ou pet pisa no mobi selecionado. |
-| **Habbo diz algo** | Disparado quando um usuário digita uma palavra ou frase específica no chat. |
-| **Habbo faz ação** | Ativa quando um usuário realiza ações como acenar, sentar, dançar ou ficar em modo "afk". |
-| **Batida** | Detecta quando um mobi em movimento colide com um usuário. |
-| **Repetir Efeito** | Executa a pilha em intervalos regulares (de 0,5 segundos a 60 segundos). |
-| **Estado do Mobi é modificado** | Ativado quando o estado de um mobi é alterado (ex: girar uma alavanca ou abrir uma porta). |
-| **Habbo entra no Quarto** | Dispara assim que um usuário entra ou sai do quarto. |
-| **Variável Mudou** | Ativa quando uma variável específica é atribuída, excluída ou tem seu valor alterado. |
+| ![](https://images.habbo.com/dcr/hof_furni/50950/wf_trg_walks_on_furni_icon.png) **Habbo anda no Mobi** | Ativado quando um usuário, bot ou pet pisa no mobi selecionado. |
+| ![](https://images.habbo.com/dcr/hof_furni/50950/wf_trg_says_something_icon.png) **Habbo diz algo** | Disparado quando um usuário digita uma palavra ou frase específica no chat. |
+| ![](https://images.habbo.com/dcr/hof_furni/69021/wf_trg_user_performs_action_icon.png) **Habbo faz ação** | Ativa quando um usuário realiza ações como acenar, sentar, dançar ou ficar em modo "afk". |
+| ![](https://images.habbo.com/dcr/hof_furni/50950/wf_trg_collision_icon.png) **Batida** | Detecta quando um mobi em movimento colide com um usuário. |
+| ![](https://images.habbo.com/dcr/hof_furni/50950/wf_trg_periodically_icon.png) **Repetir Efeito** | Executa a pilha em intervalos regulares (de 0,5 segundos a 60 segundos). |
+| ![](https://images.habbo.com/dcr/hof_furni/69540/wf_trg_stuff_state_icon.png) **Estado do Mobi é modificado** | Ativado quando o estado de um mobi é alterado. |
+| ![](https://images.habbo.com/dcr/hof_furni/56667/wf_trg_enter_room_icon.png) **Habbo entra no Quarto** | Dispara assim que um usuário entra ou sai do quarto. |
+| ![](https://images.habbo.com/dcr/hof_furni/71472/wf_trg_var_changed_icon.png) **Variável Mudou** | Ativa quando uma variável é alterada. |
 
 
 ## 2. Efeitos: O "O Que"
