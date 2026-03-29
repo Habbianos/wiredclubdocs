@@ -9,7 +9,18 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Wired Club Docs',
-      		description: 'Documentação oficial da comunidade Wired Club, o maior portal Wired!',
+			logo: {
+				src: './src/assets/new_logo_square.png',
+				replacesTitle: true,
+			},
+			description: 'Documentação oficial da comunidade Wired Club, o maior portal Wired!',
+			
+			locales: {
+				root: {
+					label: 'Português (Brasil)',
+					lang: 'pt-BR',
+				},
+			},
 			social: [
 				{ icon: 'external', label: 'Website', href: 'https://wiredclub.com.br/' },
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/wiredclub/docs' }
@@ -35,6 +46,10 @@ export default defineConfig({
 					],
 				},
 			],
+			editLink: {
+				baseUrl: 'https://github.com/wiredclub/docs/edit/main/',
+			},
+      		lastUpdated: true,
 		}),
 	],
 });
