@@ -9,6 +9,8 @@ sidebar:
     variant: tip
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+
 A automação no Habbo Hotel baseia-se em um princípio lógico de causa e efeito. O sistema Wired permite que você programe comportamentos no seu quarto sem a necessidade de escrever linhas de código tradicionais, utilizando uma interface visual baseada em "caixas" de mobis que interagem entre si.
 
 ### A Lógica de Empilhamento
@@ -21,6 +23,8 @@ A pilha é a unidade funcional básica: quando os mobis estão na mesma coordena
 
 O funcionamento de uma pilha Wired segue uma sequência linear de processamento:
 
+<Steps>
+
 1. **O Impulso (Ativação):** Tudo começa com um **Ativador**. Ele atua como o gatilho inicial da pilha, iniciando a execução quando um evento específico ocorre (como um usuário pisar em um piso ou dizer uma senha).
 
 2. **A Validação (Condição):** Se houver uma ou mais **Condições** na pilha, o sistema fará uma pausa para verificar se os requisitos foram atendidos. Por padrão, todas as condições em uma pilha devem ser verdadeiras para que a execução continue (lógica "E"). Se qualquer condição falhar, o processo é abortado imediatamente e o efeito não é executado. A animação visual dos Wireds da pilha só acontece caso ela seja executada.
@@ -28,6 +32,8 @@ O funcionamento de uma pilha Wired segue uma sequência linear de processamento:
 3. **O Direcionamento (Seletores):** Em sistemas avançados, os **Seletores** definem quem ou o que será afetado. Eles podem escolher usuários em uma área específica ou mobis de um determinado tipo, expandindo o alvo para além de quem disparou o gatilho inicial ou uma configuração fixa dos efeitos.
 
 4. **A Ação (Efeito):** Finalmente, o **Efeito** realiza a mudança "física" no quarto (na maioria das vezes), como teleportar um usuário, abrir uma porta ou mostrar uma mensagem. Há também efeitos que redirecionam o fluxo de execução para outra pilha, que alteram variáveis internas ou que simplesmente criam uma mensagem de registro para o criador do quarto poder fazer uma auditoria posterior.
+
+</Steps>
 
 ### Configuração e Parâmetros
 

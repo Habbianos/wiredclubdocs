@@ -9,6 +9,8 @@ sidebar:
     variant: tip
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 A janela de configuração dos Wireds segue uma estrutura padronizada entre quase todos os tipos (Ativadores, Efeitos, Condições, etc.), embora cada um possua campos específicos de acordo com sua função (exceto por alguns que não possuem campos).
 
 Apesar das variações, os componentes de interface reutilizam padrões bem definidos. Dominar esses padrões é essencial para configurar sistemas de forma rápida, previsível e escalável.
@@ -54,7 +56,9 @@ Dependendo do Wired, esses campos podem aceitar:
   * `[i] [/i]`: Para <i>itálico</i>.
   * `[b] [/b]`: Para <b>negrito</b>.
 
-> Observação: para utilizar múltiplas formatações simultaneamente, é necessário que as tags de fechamento na ordem inversa à das tags de início. Ou seja, a primeira tag a ser aberta deve ser a última a ser fechada. Por exemplo, `[red][b]AVISO[/b][/red]` ou `[b][u]Pontuação[/u]: [green]42[/green][/b]`.
+<Aside title="Observação">
+ Para utilizar múltiplas formatações simultaneamente, é necessário que as tags de fechamento na ordem inversa à das tags de início. Ou seja, a primeira tag a ser aberta deve ser a última a ser fechada. Por exemplo, `[red][b]AVISO[/b][/red]` ou `[b][u]Pontuação[/u]: [green]42[/green][/b]`.
+</Aside>
 
 Galeria de exemplos:
 
@@ -320,7 +324,9 @@ Galeria de exemplos:
 | Condição | ![](https://images.habbo.com/dcr/hof_furni/69032/wf_cnd_has_handitem_icon.png) | **Usuário tem item de mão** |
 | Seletor | ![](https://images.habbo.com/dcr/hof_furni/69982/wf_slc_users_handitem_icon.png) | **Habbos com Item de Mão** |
 
-> Observação: existe uma lista negra de itens bloqueados para o Efeito, para evitar que itens relacionados a campanhas de patrocinadores ou exclusivos de staffs sejam usados. Havia um conjunto inicial de itens bloqueados que são fornecidos por mobis raros, mas estes itens já podem ser usados normalmente.
+<Aside title="Observação">
+ Existe uma lista negra de itens bloqueados para o item de mão, para evitar que itens relacionados a campanhas de patrocinadores ou exclusivos de staffs sejam usados. Havia um conjunto inicial de itens bloqueados que são fornecidos por mobis raros, mas estes itens já podem ser usados normalmente.
+</Aside>
 
 ### Visual
 
