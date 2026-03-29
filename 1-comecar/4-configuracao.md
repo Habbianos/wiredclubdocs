@@ -1,20 +1,20 @@
 # Configurando Wireds
 
-A janela de configuração dos Wired segue uma estrutura relativamente padronizada entre todos os tipos (Ativadores, Efeitos, Condições, etc.), mas cada um possui campos específicos de acordo com sua função (exceto alguns que não possuem nenhum campo).
+A janela de configuração dos Wireds segue uma estrutura padronizada entre quase todos os tipos (Ativadores, Efeitos, Condições, etc.), embora cada um possua campos específicos de acordo com sua função (exceto por alguns que não possuem campos).
 
 Apesar das variações, os componentes de interface reutilizam padrões bem definidos. Dominar esses padrões é essencial para configurar sistemas de forma rápida, previsível e escalável.
 
 ## Seleção de Mobi
 
-Esse campo permite vincular um ou mais mobis à execução do Wired.
+Este campo permite vincular um ou mais mobis à execução do Wired.
 
-Os Wireds que permitirem a seleção de mobis, automaticamente entram em modo de captura ao abrir sua configuração, permitindo que você clique nos mobis dentro do quarto para selecionar e armazenar na configuração da caixa. Os mobis selecionados são destacados com um efeito de cor estilo "congelado" na cor cinza, azul ou verde.
+Os Wireds que permitem a seleção de mobis entram automaticamente em modo de captura ao abrir sua configuração, permitindo que você clique nos mobis dentro do quarto para selecioná-los e armazená-los na caixa. Os mobis selecionados são destacados com um efeito de cor (estilo "congelado") em cinza, azul ou verde.
 
 **Características importantes:**
 
-* Limite padrão de **até 20 mobis por Wired**
-* A seleção é **estática** (não muda dinamicamente sem Seletores)
-* Mobis removidos do quarto invalidam automaticamente a referência
+* **Limite padrão:** Geralmente permite a seleção de **até 20 mobis por Wired** (originalmente o limite era de 5, credo!).
+* **Natureza da seleção:** A seleção é **estática** (não muda dinamicamente sem o auxílio de Seletores).
+* **Validação:** Mobis removidos do quarto invalidam automaticamente a referência na configuração.
 
 Galeria de exemplos:
 
@@ -24,28 +24,28 @@ Galeria de exemplos:
 
 ## Campo de Texto
 
-Campos de texto são usados para entrada ou saída de dados livres, como:
+Campos de texto são usados para a entrada ou saída de dados livres, tais como:
 
-* Mensagens exibidas no chat
-* Palavras-chave de ativação
+* Mensagens exibidas no chat.
+* Palavras-chave de ativação.
 
 Dependendo do Wired, esses campos podem aceitar:
 
-* Texto simples
-* Variáveis dinâmicas (via Extras):
-  * `#( )`: Para captura de variável em um texto de entrada
-  * `$( )`: Para inserção de variável (e nomes automáticos) em um texto de saída
-* Formatação básica:
-  * `[red] [/red]`: Para <span style="color: red">vermelho</span>
-  * `[blue] [/blue]`: Para <span style="color: blue">azul</span>
-  * `[purple] [/purple]`: Para <span style="color: purple">roxo</span>
-  * `[green] [/green]`: Para <span style="color: green">verde</span>
-  * `[cyan] [/cyan]`: Para <span style="color: cyan">ciano</span>
-  * `[u] [/u]`: Para <u>sublinhado</u>
-  * `[i] [/i]`: Para <i>itálico</i>
-  * `[b] [/b]`: Para <b>negrito</b>
+* **Texto simples**.
+* **Variáveis dinâmicas (via Extras):**
+  * `#( )`: Para captura de variável em um texto de entrada.
+  * `$( )`: Para inserção de variável (e nomes automáticos) em um texto de saída.
+* **Formatação básica:**
+  * `[red] [/red]`: Para <span style="color: red">vermelho</span>.
+  * `[blue] [/blue]`: Para <span style="color: blue">azul</span>.
+  * `[purple] [/purple]`: Para <span style="color: purple">roxo</span>.
+  * `[green] [/green]`: Para <span style="color: green">verde</span>.
+  * `[cyan] [/cyan]`: Para <span style="color: cyan">ciano</span>.
+  * `[u] [/u]`: Para <u>sublinhado</u>.
+  * `[i] [/i]`: Para <i>itálico</i>.
+  * `[b] [/b]`: Para <b>negrito</b>.
 
-> Observação: para utilizar múltiplas formatações ao mesmo tempo, é necessário que você sempre coloque as tags de fechamento na ordem inversa que as tags de início. Ou seja, a primeira tag a ser aberta deve ser a última a ser fechada. Por exemplo, `[red][b]AVISO[/b][/red]` ou `[b][u]Pontuação[/u]: [green]42[/green][/b]`.
+> Observação: para utilizar múltiplas formatações simultaneamente, é necessário que as tags de fechamento na ordem inversa à das tags de início. Ou seja, a primeira tag a ser aberta deve ser a última a ser fechada. Por exemplo, `[red][b]AVISO[/b][/red]` ou `[b][u]Pontuação[/u]: [green]42[/green][/b]`.
 
 Galeria de exemplos:
 
@@ -120,19 +120,13 @@ Galeria de exemplos:
 
 ### Seletores
 
-É interessante observar que todos os Seletores compartilham as seguintes opções:
+É importante observar que todos os Seletores compartilham opções de **Filtro** (interseção) e **Inversão** (selecionar o oposto do critério definido).
 
 [imagem]
 
 ## Seleção Numérica
 
-Campos utilizados para definir valores numéricos.
-
-Podem aparecer como:
-
-* Campo de entrada manual
-* Botões incrementais (+ / -)
-* Barra deslizante
+Campos utilizados para definir valores numéricos. Podem aparecer como campos de entrada manual, botões incrementais (+ / -) ou barras deslizantes.
 
 Galeria de exemplos:
 
@@ -150,24 +144,11 @@ Um dos usos mais importantes da seleção numérica é o **atraso**.
 
 [imagem]
 
-Define o tempo que o Efeito aguardará antes de executar sua ação após ser ativado.
-
-**Comportamento:**
-
-* Medido em segundos
-* Pode ser imediato (0) ou até 10 segundos
-* Pode influenciar diretamente a ordem de execução da pilha
-* **Não** impede que a pilha seja acionada novamente nesse período
+Ele define o tempo (em segundos) que o Efeito aguardará antes de executar sua ação. O atraso **não** impede que a pilha seja acionada novamente durante o período de espera, portanto evite usá-lo em situações onde possam haver acionamentos frequêntes para não acabar em estados inesperados.
 
 ## Lista Suspensa
 
-Campos que apresentam uma lista de opções pré-definidas em formato compacto. São usados quando há muitas opções possíveis, evitando poluir a interface.
-
-**Características:**
-
-* Apenas uma opção selecionada por vez
-* Pode conter listas dinâmicas (ex: seus grupos)
-* Frequentemente combinado com busca
+Campos que apresentam uma lista de opções pré-definidas em formato compacto para evitar poluição visual, principalmente em casos onde a lista é dinâmica (como por exemplo a lista dos seus grupos) e permitindo a possibilidade de um campo de busca entre as opções.
 
 Galeria de exemplos:
 
@@ -182,11 +163,11 @@ Galeria de exemplos:
 
 ### Seleção de Variável
 
-Um caso específico de lista suspensa é a seleção de variável. Permite escolher uma variável de um determinado tipo presente no quarto. O tipo de variável compatível depende de cada tipo de Wired.
+Um caso específico de lista suspensa é a seleção de variável. O tipo de variável compatível depende de cada tipo de Wired.
 
 **Observações:**
 
-* Algumas interfaces existem que selecione uma variável de contexto
+* Algumas exigem que se selecione uma variável de contexto
 * A lista muda dinamicamente conforme o contexto do quarto
 
 Galeria de exemplos:
@@ -206,15 +187,7 @@ Galeria de exemplos:
 
 ## Configurações Avançadas
 
-Alguns Wireds possuem opções adicionais ocultas sob um botão de **"Mostrar configurações avançadas"**.
-
-Essas opções geralmente permitem modificar:
-
-* Fonte de dados
-* Escopo de execução
-* Comportamentos internos
-
-São fundamentais para criar sistemas mais dinâmicos e reutilizáveis, mas depende de uma compreenção mais avançada sobre o comportamento dos Wireds.
+Alguns Wireds possuem opções adicionais ocultas sob um botão de **"Mostrar configurações avançadas"**. Elas são fundamentais para criar sistemas dinâmicos, mas exigem uma **compreensão** maior sobre o fluxo de dados.
 
 Galeria de exemplos:
 
