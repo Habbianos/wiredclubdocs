@@ -92,7 +92,7 @@ Os Filtros usam a cor **branca** e também são consideravelmente mais altos, co
 Veja a lista completa [aqui](#).
 
 ## 5. Extras: O "Como"
-Os Extras usam cores variadas, como uma tentativa de fazer com que as que tenham propósitos similares com uma aparência similar. Estes componentes modificam o comportamento padrão da pilha ou adicionam funcionalidades avançadas.
+Os Extras usam cores variadas, como uma tentativa de fazer com que as que tenham propósitos similares com uma aparência similar. Estes componentes modificam o comportamento padrão da pilha ou adicionam funcionalidades avançadas. Podem ser subdivididos em "gerais", "texto" e "scanner" (escaneador).
 
 | Ícone | Extra | Cor | Função |
 | :--- | :--- | :--- | :--- |
