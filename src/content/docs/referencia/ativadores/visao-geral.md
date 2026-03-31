@@ -2,11 +2,11 @@
 title: Visão Geral dos Ativadores
 description: a
 sidebar:
-  label: Visão Geral dos Ativadores
+  label: Visão Geral
   order: 0
   badge:
-    text: Novo
-    variant: tip
+    text: RASCUNHO
+    variant: note
 ---
 
 ## O que é um Ativador?

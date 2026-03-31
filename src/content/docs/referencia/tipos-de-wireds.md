@@ -1,9 +1,9 @@
 ---
 title: Tipos de Wireds
-description: Explore os tipos de Wireds no Habbo Hotel, incluindo Ativadores, Efeitos, Condições e mais, com descrições e exemplos para criar sistemas interativos.
+description: Explore os tipos de Wireds no Habbo Hotel, incluindo Ativadores, Efeitos, Condições, Seletores, Tabelas de Classificação, Extras e Variáveis.
 sidebar:
   label: Tipos de Wireds
-  order: 2
+  order: 0
   badge:
     text: Novo
     variant: tip
@@ -88,7 +88,7 @@ Utilizar múltiplos Seletores na mesma pilha fará com que a seleção deles sej
 
 Veja a lista completa [aqui](#).
 
-## Filtros: O "Quanto"
+### Filtros: O "Quanto"
 Os Filtros usam a cor **branca** e também são consideravelmente mais altos, como os Seletores. Eles complementam os Seletores pois fazem um papel muito útil filtrando pela **quantidade de itens**.
 
 | Ícone | Filtro | Função |
@@ -168,7 +168,7 @@ O Contrato Customizável retoma a relação com caixas Wired, com uma base peque
 
 ---
 
-# Utilitários Adicionais
+## Utilitários Adicionais
 Existem mobis auxiliares que não são "caixas" de programação, mas são fundamentais:
 - **Antenas:** Usadas para enviar e receber sinais sem fios entre pilhas distantes.
 - **Conector de Quarto:** Teleporte capaz de teletransportar um usuário de um quarto para outro sem que o usuário precise interagir com o mobi.

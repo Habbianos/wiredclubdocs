@@ -1,9 +1,12 @@
 ---
 title: Primeiro Sistema
-description: a
+description: Construa seu primeiro sistema Wired funcional com um ativador e um efeito, aprendendo a estrutura básica da programação visual no Habbo Hotel.
 sidebar:
   label: Primeiro Sistema
-  order: 4
+  order: 0
+  badge:
+    text: Novo
+    variant: tip
 ---
 
 A seguir será criado o primeiro sistema **Wired**. Trata-se de um sistema simples que utiliza o ativador **“Habbo anda no mobi”** para detectar quando um personagem pisa no **“Piso Preto”** e, a partir desse evento, exibir uma mensagem previamente configurada.

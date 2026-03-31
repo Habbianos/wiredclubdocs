@@ -29,22 +29,54 @@ export default defineConfig({
 				{
 					label: 'Vamos Começar',
 					autogenerate: { directory: 'vamos-comecar' },
-					// items: [
-					// 	{ label: 'Introdução', slug: 'vamos-comecar/introducao' },
-					// 	{ label: 'Como Funcionam', slug: 'vamos-comecar/como-funciona' },
-					// 	{ label: 'Tipos de Wired', slug: 'vamos-comecar/tipos-de-wired' },
-					// ],
-				},
-				{
+				}, {
+					label: 'Guias práticos',
+					autogenerate: { directory: 'guias-praticos' },
+				}, {
 					label: 'Referência',
 					items: [
+						{ label: 'Tipos de Wired', slug: 'referencia/tipos-de-wireds' },
+						{ label: 'Configurando Wireds', slug: 'referencia/configurando-wireds' },
 						{
 							label: 'Ativadores',
 							autogenerate: { directory: 'referencia/ativadores' },
 							collapsed: true,
 						},
+						{
+							label: 'Efeitos',
+							autogenerate: { directory: 'referencia/efeitos' },
+							collapsed: true,
+						},
+						{
+							label: 'Condições',
+							autogenerate: { directory: 'referencia/condicoes' },
+							collapsed: true,
+						},
+						{
+							label: 'Seletores',
+							autogenerate: { directory: 'referencia/seletores' },
+							collapsed: true,
+						},
+						{
+							label: 'Extras',
+							autogenerate: { directory: 'referencia/extras' },
+							collapsed: true,
+						},
+						{
+							label: 'Variáveis',
+							autogenerate: { directory: 'referencia/variaveis' },
+							collapsed: true,
+						},
+						{
+							label: 'Contratos',
+							autogenerate: { directory: 'referencia/contratos' },
+							collapsed: true,
+						},
 					],
-				},
+				}, {
+					label: 'Sobre Nós',
+					autogenerate: { directory: 'sobre-nos' },
+				}
 			],
 			editLink: {
 				baseUrl: 'https://github.com/wiredclub/docs/edit/main/',
