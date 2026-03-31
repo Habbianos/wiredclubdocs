@@ -162,7 +162,7 @@ Os Contratos possuem um visual totalmente diferente, e de certa forma podem nem 
 | ![](https://images.habbo.com/dcr/hof_furni/74772/wf_contract_reward_icon.png) | **Contrato de Recompensa** | Amarelo | Define o que o usuário deverá "receber". |
 
 ### Contrato Customizável
-O Contrato Customizável retoma a relação com caixas Wired, com uma base pequena **azul** e uma folha de papel em cima. A interface de configuração também retorna ao estilo das demais caixas Wired, permitindo que atue como qualquer um dos outros contratos de forma dinâmica, atravéz da interação com variáveis, seletores e muito mais.
+O Contrato Customizável retoma a relação com caixas Wired, com uma base pequena **azul** e uma folha de papel em cima. A interface de configuração também retorna ao estilo das demais caixas Wired, permitindo que atue como qualquer um dos outros contratos de forma dinâmica, através da interação com variáveis, seletores e muito mais.
 
 ![](https://images.habbo.com/dcr/hof_furni/74772/wf_xtra_custom_contract_icon.png)
 

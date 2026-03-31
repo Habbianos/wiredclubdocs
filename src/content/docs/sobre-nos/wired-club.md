@@ -11,7 +11,7 @@ O [**Wired Club**](https://wiredclub.com.br) é um fã site criado por jogadores
 
 O projeto foi idealizado e desenvolvido por **an4log**, criador de conteúdo oficial e responsável por um dos maiores canais de tutoriais sobre Wired do Brasil. A ideia surgiu de forma repentina, mas com um propósito muito claro: organizar, ensinar e elevar o nível do desenvolvimento Wired na comunidade brasileira. Em menos de duas semanas, o site já estava totalmente desenvolvido e no ar.
 
-Mesmo com poucos dias de projeto, a equipe já estava formada e a comunidade ultrapassava 1**00 desenvolvedores ativos**, consolidando o Wired Club como um espaço sério, colaborativo e focado em evolução técnica.
+Mesmo com poucos dias de projeto, a equipe já estava formada e a comunidade ultrapassava **100 desenvolvedores ativos**, consolidando o Wired Club como um espaço sério, colaborativo e focado em evolução técnica.
 
 Nosso objetivo é fomentar o conhecimento, incentivar a inovação e elevar o padrão da comunidade. Queremos ensinar de forma estruturada, oferecendo cursos, tutoriais e conteúdos práticos para iniciantes e desenvolvedores experientes. Buscamos também nos tornar a principal central de notícias e atualizações sobre Wired, reunindo informação relevante, organizada e confiável.
 
