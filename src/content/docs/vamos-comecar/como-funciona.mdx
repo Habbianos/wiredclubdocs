@@ -9,7 +9,7 @@ sidebar:
     variant: tip
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, Aside } from '@astrojs/starlight/components';
 
 A automação no Habbo Hotel baseia-se em um princípio lógico de causa e efeito. O sistema Wired permite que você programe comportamentos no seu quarto sem a necessidade de escrever linhas de código tradicionais, utilizando uma interface visual baseada em "caixas" de mobis que interagem entre si.
 
@@ -17,7 +17,7 @@ A automação no Habbo Hotel baseia-se em um princípio lógico de causa e efeit
 
 Para que qualquer automação funcione, os mobis Wired devem ser colocados uns sobre os outros, formando o que a comunidade chama de **Pilha**.
 
-A pilha é a unidade funcional básica: quando os mobis estão na mesma coordenada (um em cima do outro), eles compartilham o mesmo contexto. Se você colocar um ativador em um canto do quarto e um efeito no outro, o sistema não reconhecerá a conexão entre eles; a sobreposição física é o que estabelece o vínculo lógico. A ordem ou altitude dos Wireds na pilha não afeta o comportamento padrão do sistema.
+A pilha é a unidade funcional básica: quando os mobis estão na mesma coordenada (um em cima do outro), eles compartilham o mesmo contexto. Se você colocar um ativador em um canto do quarto e um efeito no outro, o sistema não reconhecerá a conexão entre eles; a sobreposição física é o que estabelece o vínculo lógico.
 
 ## O Fluxo de Execução
 
@@ -34,6 +34,13 @@ O funcionamento de uma pilha Wired segue uma sequência linear de processamento:
 4. **A Ação (Efeito):** Finalmente, o **Efeito** realiza a mudança "física" no quarto (na maioria das vezes), como teleportar um usuário, abrir uma porta ou mostrar uma mensagem. Há também efeitos que redirecionam o fluxo de execução para outra pilha, que alteram variáveis internas ou que simplesmente criam uma mensagem de registro para o criador do quarto poder fazer uma auditoria posterior.
 
 </Steps>
+
+<Aside type="tip" title="Dica">
+ {/* A ordem ou altitude dos Wireds na pilha não afeta o comportamento padrão do sistema. */}
+A ordem dos mobis na pilha não altera a lógica de execução, mas pode ser usada para organizar visualmente o sistema. Por exemplo, é comum colocar o Ativador na base da pilha, seguido pelas Condições e Efeitos empilhados acima. Ao ser acionado, o sistema processará os componentes com base em sua função (Ativadores primeiro, depois Condições, Seletores e finalmente Efeitos), independentemente da posição física.
+
+Você consegue forçar que os Efeitos sejam processados em ordem do mais baixo para o mais alto usando o Extra "Executa na Ordem", mas isso só é necessário em casos mais avançados.
+</Aside>
 
 ## Configuração e Parâmetros
 
