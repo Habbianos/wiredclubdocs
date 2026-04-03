@@ -116,6 +116,7 @@ export default defineConfig({
 					autogenerate: { directory: 'sobre-nos' },
 				}
 			],
+			customCss: ['./src/styles/global-style.css'],
 			editLink: {
 				baseUrl: 'https://github.com/wiredclub/docs/edit/main/',
 			},
