@@ -1,49 +1,84 @@
-# Starlight Starter Kit: Basics
+# Wired Club Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Documentação Wired feita pela comunidade **Wired Club**, o maior portal Wired do Brasil!
+
+Construído com [Starlight](https://starlight.astro.build/).
+
+## Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/wiredclub/docs
+cd wired-docs
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+O site estará disponível em `http://localhost:4321`
+
+## Estrutura
 
 ```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
+wired-docs/
 ├── src/
 │   ├── assets/
+│   │   └── new_logo.ong              # Logo do Wired Club
 │   ├── content/
 │   │   └── docs/
-│   └── content.config.ts
+│   │       ├── index.mdx             # Página inicial (hero)
+│   │       ├── vamos-comecer/
+│   │       │   ├── introducao.mdx
+│   │       │   ├── como-fundiona.mdx
+│   │       │   └── perguntas-frequentes.md
+│   │       ├── referencia/
+│   │       │   ├── glossario.mdx
+│   │       │   ├── tipos-de-wireds.md
+│   │       │   └── ...
+│   │       └── .../
+│   └── components/
+│       └── PageReader.astro          # Componentes customizados
 ├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+└── package.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Adicionando conteúdo
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Crie arquivos `.md` ou `.mdx` em `src/content/docs/` e eles aparecerão automaticamente. Configure o frontmatter:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```yaml
+---
+title: Título da Página
+description: Descrição para SEO
+---
+```
 
-## 🧞 Commands
+Adicione a página ao sidebar em `astro.config.mjs`.
 
-All commands are run from the root of the project, from a terminal:
+## Scripts
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Comando | Ação |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento em `localhost:4321` |
+| `npm run build` | Build de produção em `./dist/` |
+| `npm run preview` | Preview da build de produção |
 
-## 👀 Want to learn more?
+## Contribuindo
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+1. Fork o repositório
+2. Crie sua branch: `git checkout -b feature/nova-pagina`
+3. Commit suas mudanças: `git commit -m 'docs: adiciona guia de X'`
+4. Push: `git push origin feature/nova-pagina`
+5. Abra um Pull Request
+
+## Licença
+
+Este projeto é um fã site independente. Não é afiliado à Sulake Oy.
+Conteúdo sob licença [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+---
+
+Desenvolvido com ❤️ pela equipe Wired Club | [wiredclub.com.br](https://wiredclub.com.br)
