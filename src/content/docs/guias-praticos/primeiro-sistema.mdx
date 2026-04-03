@@ -11,9 +11,11 @@ sidebar:
 
 import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
-A seguir, criaremos o seu primeiro sistema **Wired**. Trata-se de um sistema simples que utiliza o ativador **“Habbo anda no mobi”** para detectar quando um personagem pisa no **“Piso Preto”** e, a partir desse evento, exibir uma mensagem previamente configurada.
+Seja bem-vindo ao seu primeiro passo no mundo da programação Wired! Automatizar quartos pode parecer um grande desafio no início, mas tudo se baseia em uma regra de ouro: combinar um sensor que detecta uma ação com um executor que realiza uma resposta.
 
-Sistemas compostos por **um ativador e um efeito** representam a estrutura mínima capaz de gerar um evento dentro de um quarto. Em outras palavras, para que uma pilha de Wireds seja considerada um **sistema funcional**, é necessário que ela contenha **ao menos um ativador e um efeito**.
+## Exemplo Prático: Criando o seu Primeiro Sistema Wired
+
+A seguir, criaremos o seu primeiro sistema **Wired**. Pense nele como um **sistema de campainha inteligente**: o **"Piso Escuro"** é o botão que alguém pressiona ao chegar, o ativador **"Habbo anda no mobi"** é o gatilho que detecta essa ação, e a **mensagem** é o som da campainha tocando. Quando alguém pisa no botão (sensor), a campainha (resposta) toca automaticamente.
 
 <figure><img src="https://2032763373-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fto8buwU77BOLvqbI9scn%2Fuploads%2FkfZA5HMpFzHrsJxC1JzP%2FAtivadores.gif?alt=media&#x26;token=186cd676-d4c2-4afe-ad7a-e8594adc9a1d" alt=""/><figcaption></figcaption></figure>
 
@@ -36,3 +38,13 @@ ENTÃO
 ```
 </TabItem>
 </Tabs>
+
+## Próximos Passos
+
+Parabéns! Você acabou de dominar a estrutura básica e obrigatória do ecossistema Wired: a combinação de um Ativador e um Efeito (QUANDO → ENTÃO). Com esse conhecimento, você já consegue criar pequenas interações e mensagens automáticas no seu quarto.
+
+Mas e se você quisesse que essa mensagem de boas-vindas fosse exibida **apenas** para os membros de um grupo específico? Ou quem sabe permitir o acesso a uma porta somente se o usuário estiver segurando um copo de café?
+
+Para criar regras, restrições e "travas de segurança" como essas, precisamos apresentar um terceiro elemento à nossa pilha: as **Condições** (o bloco **SE**).
+
+Se precisar de uma explicação mais detalhada sobre os Ativadores e Efeitos, acesse a seção de referência: [Visão Geral dos Ativadores](../../referencia/ativadores/visao-geral) e [Visão Geral dos Efeitos](../../referencia/efeitos/visao-geral).

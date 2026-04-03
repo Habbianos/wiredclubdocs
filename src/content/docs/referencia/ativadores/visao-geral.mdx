@@ -1,0 +1,35 @@
+---
+title: Visão Geral dos Ativadores
+description: Acionadores que "escutam" eventos específicos no quarto para iniciar uma execução. Eles são o "Quando" da automação e funcionam como uma bateria que fornece o impulso inicial para a pilha.
+sidebar:
+  label: Visão Geral
+  order: 0
+  badge:
+    text: Novo
+    variant: tip
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+{/* exemplo para o infobox: https://github.com/withastro/docs/blob/main/src/components/starlight/TableOfContents.astro */}
+
+## O que é um Ativador?
+
+O Ativador é o componente que "escuta" eventos específicos no quarto para iniciar uma execução. Ele é o "Quando" da automação e funciona como uma bateria que fornece o impulso inicial para a pilha. Você consegue identifiá-los facilmente pois todos possuem a cor predominante **marrom**.
+
+<Aside type="tip" title="Dica de Ouro">
+Em termos de programação tradicional, os Ativadores funcionam como os *Event Listeners* (ouvintes de eventos).
+</Aside>
+
+A regra fundamental para a utilização desses mobis é que **um Ativador sozinho não executa nenhuma ação física**. Para que um sistema seja funcional, ele exige obrigatoriamente a sobreposição vertical (empilhamento) de pelo menos um **Efeito** no mesmo quadrado.
+
+## A "Fonte de Gatilho"
+Um dos conceitos mais importantes ao lidar com Ativadores é compreender a **Fonte de Gatilho**. 
+
+Quando um evento acontece, o Ativador não apenas dispara a pilha, mas ele também identifica e "mantém" a identidade de quem causou o disparo. Essa fonte pode ser:
+* Um usuário (Habbo, Bot ou Pet).
+* Nenhuma (em casos de ativadores automáticos de tempo por exemplo).
+
+Essa informação é repassada automaticamente para os Efeitos na pilha. É por causa da Fonte de Gatilho que o efeito "Teleportar para Mobi" sabe exatamente quem ele deve teleportar, sem que você precise programar o nome do usuário manualmente.
+
+## Lista Completa

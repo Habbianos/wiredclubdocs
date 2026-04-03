@@ -124,7 +124,6 @@ export default defineConfig({
 			plugins: [starlightLlmsTxt(), starlightScrollToTop({
 				tooltipText: 'Voltar ao topo',
 				showTooltip: true,
-				threshold: 10,
 				borderRadius: '50',
 				showProgressRing: true,
 				progressRingColor: 'white',
