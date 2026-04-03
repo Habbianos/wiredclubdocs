@@ -1,0 +1,428 @@
+---
+// PageReader.astro
+// Drop this component anywhere in your Starlight layout (e.g. <slot name="sidebar" /> or above content)
+// It reads the main article content using the Web Speech API with live highlight.
+---
+
+<div id="page-reader" aria-label="Leitor de página">
+	<button id="pr-toggle" aria-label="Não disponível" title="Não disponível" disabled>
+		<!-- <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+			<path d="M8 5v14l11-7z"/>
+		</svg> -->
+		<svg id="pr-icon-play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12.7452 6.41155C14.0183 7.1039 14.0183 8.8961 12.7452 9.58844L5.05796 13.7687C3.8206 14.4416 2.29999 13.5658 2.29999 12.1803V3.81974C2.29999 2.43421 3.8206 1.55841 5.05796 2.23129L12.7452 6.41155Z" fill="white"/>
+		</svg>
+
+		<!-- <svg id="pr-icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="display:none">
+			<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		</svg> -->
+		<svg id="pr-icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:none">
+			<path d="M2 4.4C2 3.26863 2 2.70294 2.35147 2.35147C2.70294 2 3.26863 2 4.4 2C5.53137 2 6.09706 2 6.44853 2.35147C6.8 2.70294 6.8 3.26863 6.8 4.4V11.6C6.8 12.7314 6.8 13.297 6.44853 13.6485C6.09706 14 5.53137 14 4.4 14C3.26863 14 2.70294 14 2.35147 13.6485C2 13.297 2 12.7314 2 11.6V4.4Z" fill="white"/>
+			<path d="M9.2 4.4C9.2 3.26863 9.2 2.70294 9.55148 2.35147C9.90296 2 10.4686 2 11.6 2C12.7314 2 13.297 2 13.6485 2.35147C14 2.70294 14 3.26863 14 4.4V11.6C14 12.7314 14 13.297 13.6485 13.6485C13.297 14 12.7314 14 11.6 14C10.4686 14 9.90296 14 9.55148 13.6485C9.2 13.297 9.2 12.7314 9.2 11.6V4.4Z" fill="white"/>
+		</svg>
+
+		<span id="pr-label">Ouvir página</span>
+	</button>
+
+	<div id="pr-controls" aria-hidden="true">
+		<button id="pr-stop" title="Parar" aria-label="Parar leitura">
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+				<path d="M6 6h12v12H6z"/>
+			</svg> -->
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2 8C2 5.17157 2 3.75736 2.87868 2.87868C3.75736 2 5.17157 2 8 2C10.8284 2 12.2427 2 13.1213 2.87868C14 3.75736 14 5.17157 14 8C14 10.8284 14 12.2427 13.1213 13.1213C12.2427 14 10.8284 14 8 14C5.17157 14 3.75736 14 2.87868 13.1213C2 12.2427 2 10.8284 2 8Z" fill="white"/>
+			</svg>
+
+		</button>
+
+		<div class="pr-divider"></div>
+
+		<label class="pr-field" title="Velocidade">
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+				<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+			</svg> -->
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M6.66466 2.14923C7.09447 2.05151 7.54149 2 8 2C11.3137 2 14 4.68629 14 8C14 11.3137 11.3137 14 8 14C7.54149 14 7.09447 13.9485 6.66466 13.8508C6.43922 13.7995 6.29802 13.5752 6.34927 13.3498C6.40052 13.1243 6.62482 12.9831 6.85026 13.0344C7.21961 13.1184 7.60434 13.1628 8 13.1628C10.8513 13.1628 13.1628 10.8513 13.1628 8C13.1628 5.14867 10.8513 2.83721 8 2.83721C7.60434 2.83721 7.21961 2.88164 6.85026 2.9656C6.62482 3.01686 6.40052 2.87565 6.34927 2.65022C6.29802 2.42478 6.43922 2.20048 6.66466 2.14923Z" fill="white"/>
+				<path d="M5.3844 3.05041C5.50759 3.24605 5.44885 3.5045 5.25322 3.62769C4.5973 4.04069 4.04069 4.5973 3.62769 5.25322C3.5045 5.44885 3.24605 5.50759 3.05041 5.3844C2.85477 5.26122 2.79604 5.00276 2.91922 4.80713C3.39895 4.04522 4.04522 3.39895 4.80712 2.91922C5.00276 2.79604 5.26122 2.85477 5.3844 3.05041Z" fill="white"/>
+				<path d="M2.9656 6.85026C3.01686 6.62482 2.87565 6.40052 2.65022 6.34927C2.42478 6.29802 2.20048 6.43922 2.14923 6.66466C2.05151 7.09447 2 7.54149 2 8C2 8.45851 2.05151 8.90553 2.14923 9.33535C2.20048 9.56078 2.42478 9.70199 2.65022 9.65075C2.87565 9.59946 3.01686 9.3752 2.9656 9.14977C2.88164 8.78039 2.83721 8.39567 2.83721 8C2.83721 7.60434 2.88164 7.21961 2.9656 6.85026Z" fill="white"/>
+				<path d="M3.05041 10.6156C3.24605 10.4924 3.5045 10.5511 3.62769 10.7468C4.04069 11.4027 4.5973 11.9593 5.25322 12.3723C5.44885 12.4955 5.50759 12.754 5.3844 12.9496C5.26122 13.1452 5.00276 13.204 4.80713 13.0808C4.04522 12.601 3.39895 11.9548 2.91922 11.1929C2.79604 10.9972 2.85477 10.7388 3.05041 10.6156Z" fill="white"/>
+				<path d="M9.90532 7.40893C10.3416 7.66657 10.3416 8.33343 9.90532 8.59107L7.27079 10.1465C6.84672 10.3969 6.32558 10.071 6.32558 9.55542V6.44455C6.32558 5.92901 6.84672 5.60313 7.27079 5.8535L9.90532 7.40893Z" fill="white"/>
+			</svg>
+
+			<input id="pr-rate" type="range" min="0.5" max="2" step="0.1" value="1" aria-label="Velocidade" title="Velocidade" />
+			<span id="pr-rate-val">1×</span>
+		</label>
+
+		<div class="pr-divider"></div>
+
+		<label class="pr-field" title="Tom">
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+				<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+			</svg> -->
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_2_34)">
+					<path d="M9.33301 13.5V2.5C9.33301 2.22397 9.55701 2.00018 9.83301 2C10.1092 2 10.333 2.22386 10.333 2.5V13.5C10.333 13.7761 10.1092 14 9.83301 14C9.55701 13.9998 9.33301 13.776 9.33301 13.5ZM13 12V4C13 3.72386 13.2239 3.5 13.5 3.5C13.7761 3.5 14 3.72386 14 4V12C14 12.2761 13.7761 12.5 13.5 12.5C13.2239 12.5 13 12.2761 13 12ZM5.66699 11V5C5.66699 4.72386 5.89085 4.5 6.16699 4.5C6.44298 4.50018 6.66699 4.72397 6.66699 5V11C6.66699 11.276 6.44298 11.4998 6.16699 11.5C5.89085 11.5 5.66699 11.2761 5.66699 11ZM11.167 10.5V5.5C11.167 5.22386 11.3909 5 11.667 5C11.943 5.00018 12.167 5.22397 12.167 5.5V10.5C12.167 10.776 11.943 10.9998 11.667 11C11.3909 11 11.167 10.7761 11.167 10.5ZM3.83301 10V6C3.83301 5.72397 4.05702 5.50018 4.33301 5.5C4.60915 5.5 4.83301 5.72386 4.83301 6V10C4.83301 10.2761 4.60915 10.5 4.33301 10.5C4.05702 10.4998 3.83301 10.276 3.83301 10ZM7.5 10V6C7.5 5.72386 7.72386 5.5 8 5.5C8.27614 5.5 8.5 5.72386 8.5 6V10C8.5 10.2761 8.27614 10.5 8 10.5C7.72386 10.5 7.5 10.2761 7.5 10ZM2 9V7C2 6.72386 2.22386 6.5 2.5 6.5C2.77614 6.5 3 6.72386 3 7V9C3 9.27614 2.77614 9.5 2.5 9.5C2.22386 9.5 2 9.27614 2 9Z" fill="white"/>
+				</g>
+				<defs>
+					<clipPath id="clip0_2_34">
+						<rect width="12" height="12" fill="white" transform="translate(2 2)"/>
+					</clipPath>
+				</defs>
+			</svg>
+
+			<input id="pr-pitch" type="range" min="0.5" max="2" step="0.1" value="1" aria-label="Tom" title="Tom" />
+			<span id="pr-pitch-val">1×</span>
+		</label>
+	</div>
+</div>
+
+<style>
+	#page-reader {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-family: inherit;
+		position: relative;
+		z-index: 10;
+		margin-bottom: 1.5rem;
+	}
+
+	#page-reader * {
+	margin: 0;
+	}
+
+	#pr-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 5px 12px 5px 9px;
+		border: 1px solid var(--sl-color-gray-5, rgba(255,255,255,0.15));
+		border-radius: 6px;
+		background: var(--sl-color-bg-sidebar, transparent);
+		color: var(--sl-color-text, #cdd6f4);
+		font-size: 0.78rem;
+		font-weight: 500;
+		cursor: pointer;
+		transition: background 0.15s, border-color 0.15s;
+		white-space: nowrap;
+	}
+
+	#pr-toggle:hover {
+		background: var(--sl-color-gray-6, rgba(255,255,255,0.08));
+		border-color: var(--sl-color-accent, #7c3aed);
+	}
+
+	#pr-toggle.reading {
+		border-color: var(--sl-color-accent, #7c3aed);
+		/* color: var(--sl-color-accent, #7c3aed); */
+	}
+
+	#page-reader:has(#pr-toggle.reading) {
+		position: sticky;
+		top: 80px;
+	}
+
+	#pr-controls {
+		display: none;
+		align-items: center;
+		gap: 4px;
+		padding: 4px 8px;
+		border: 1px solid var(--sl-color-gray-5, rgba(255,255,255,0.12));
+		border-radius: 6px;
+		background: var(--sl-color-bg-sidebar, transparent);
+	}
+
+	#pr-controls.visible {
+		display: flex;
+	}
+
+	#pr-stop {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3px;
+		border: none;
+		background: transparent;
+		color: var(--sl-color-text-accent, #f38ba8);
+		cursor: pointer;
+		border-radius: 4px;
+		transition: background 0.12s;
+	}
+
+	#pr-stop:hover {
+		background: rgba(243, 139, 168, 0.12);
+	}
+
+	.pr-divider {
+		width: 1px;
+		height: 16px;
+		background: var(--sl-color-gray-5, rgba(255,255,255,0.12));
+		margin: 0 2px;
+	}
+
+	.pr-field {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		color: var(--sl-color-gray-2, #a6adc8);
+		font-size: 0.72rem;
+	}
+
+	.pr-field input[type="range"] {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 60px;
+		height: 3px;
+		border-radius: 2px;
+		background: var(--sl-color-gray-5, rgba(255,255,255,0.15));
+		outline: none;
+		cursor: pointer;
+	}
+
+	.pr-field input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: var(--sl-color-accent, #7c3aed);
+		cursor: pointer;
+	}
+
+	.pr-field input[type="range"]::-moz-range-thumb {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: var(--sl-color-accent, #7c3aed);
+		cursor: pointer;
+		border: none;
+	}
+
+	.pr-field span {
+		min-width: 22px;
+		font-variant-numeric: tabular-nums;
+	}
+</style>
+<style is:global>
+/* Highlight styles injected into the article */
+.pr-highlight-block {
+	outline-style: solid !important;
+	outline-width: 2px !important;
+	outline-color: var(--sl-color-accent, #7c3aed);
+	outline-offset: 3px;
+	border-radius: 4px;
+	background-color: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 8%, transparent);
+	scroll-margin-top: 100px;
+
+	animation: pr-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pr-pulse {
+	0% {
+		outline-color: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 40%, transparent) !important;
+		background: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 6%, transparent) !important;
+	}
+
+	50% {
+		outline-color: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 100%, transparent) !important;
+		background: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 14%, transparent) !important;
+	}
+
+	100% {
+		outline-color: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 40%, transparent) !important;
+		background: color-mix(in srgb, var(--sl-color-accent, #7c3aed) 6%, transparent) !important;
+	}
+}
+</style>
+
+<script>
+	(() => {
+		const synth = window.speechSynthesis;
+		if (!synth) return;
+
+		const toggle = document.getElementById('pr-toggle') as HTMLButtonElement | null;
+		const label = document.getElementById('pr-label');
+		const iconPlay = document.getElementById('pr-icon-play');
+		const iconPause = document.getElementById('pr-icon-pause');
+		const controls = document.getElementById('pr-controls');
+		const stopBtn = document.getElementById('pr-stop');
+		const rateInput = document.getElementById('pr-rate') as HTMLInputElement | null;
+		const pitchInput = document.getElementById('pr-pitch') as HTMLInputElement | null;
+		const rateVal = document.getElementById('pr-rate-val');
+		const pitchVal = document.getElementById('pr-pitch-val');
+
+	if (toggle) {
+		toggle.disabled = false;
+		toggle.setAttribute('aria-label', 'Iniciar leitura');
+		toggle.setAttribute('title', 'Iniciar leitura');
+	}
+
+		// Selectors for readable blocks (Starlight article content)
+		const BLOCK_SELECTORS = 'h1, h2, h3, h4, h5, h6, p, li';
+		const ARTICLE_SELECTOR = '.sl-markdown-content, article, main [data-content]';
+
+		let blocks = [] as Element[];
+		let currentIndex = 0;
+		let isPlaying = false;
+		let isPaused = false;
+
+		function getArticle() {
+			return document.querySelector(ARTICLE_SELECTOR) || document.querySelector('main');
+		}
+
+		function collectBlocks() {
+			const article = getArticle();
+			if (!article) return [];
+			return Array.from(article.querySelectorAll(BLOCK_SELECTORS)).filter(
+				el => el.textContent.trim().length > 0
+			);
+		}
+
+		function clearHighlight() {
+			document.querySelectorAll('.pr-highlight-block').forEach(el => {
+				el.classList.remove('pr-highlight-block');
+			});
+		}
+
+		function highlightBlock(el: Element | null) {
+			clearHighlight();
+			if (!el) return;
+			el.classList.add('pr-highlight-block');
+			el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		}
+
+		function speakBlock(index: number) {
+			if (index >= blocks.length) {
+				stop();
+				return;
+			}
+			currentIndex = index;
+			const el = blocks[index];
+			highlightBlock(el);
+
+			const text = el.textContent.trim();
+			if (!text) {
+				speakBlock(index + 1);
+				return;
+			}
+
+			const utt = new SpeechSynthesisUtterance(text);
+			utt.rate = parseFloat(rateInput?.value || '1');
+			utt.pitch = parseFloat(pitchInput?.value || '1');
+			utt.lang = document.documentElement.lang || 'pt-BR';
+
+			utt.onend = () => {
+				if (isPlaying && !isPaused) {
+					speakBlock(index + 1);
+				}
+			};
+
+			utt.onerror = (e) => {
+				if (e.error !== 'interrupted') speakBlock(index + 1);
+			};
+
+			synth.cancel();
+			synth.speak(utt);
+		}
+
+		function start() {
+			blocks = collectBlocks();
+			if (blocks.length === 0) return;
+			isPlaying = true;
+			isPaused = false;
+			setPlayingUI(true);
+			speakBlock(currentIndex);
+		}
+
+		function pause() {
+			isPaused = true;
+			synth.pause();
+			setPlayingUI(false, true);
+		}
+
+		function resume() {
+			isPaused = false;
+			synth.resume();
+			setPlayingUI(true);
+		}
+
+		function stop() {
+			isPlaying = false;
+			isPaused = false;
+			currentIndex = 0;
+			synth.cancel();
+			clearHighlight();
+			setPlayingUI(false);
+			controls?.classList.remove('visible');
+		}
+
+		function setPlayingUI(playing: boolean, paused = false) {
+			if (playing) {
+				toggle?.classList.add('reading');
+				if (iconPlay) iconPlay.style.display = 'none';
+				if (iconPause) iconPause.style.display = '';
+				if (label) label.textContent = 'Pausar';
+				controls?.classList.add('visible');
+			} else if (paused) {
+				toggle?.classList.add('reading');
+				if (iconPlay) iconPlay.style.display = '';
+				if (iconPause) iconPause.style.display = 'none';
+				if (label) label.textContent = 'Retomar';
+				controls?.classList.add('visible');
+			} else {
+				toggle?.classList.remove('reading');
+				if (iconPlay) iconPlay.style.display = '';
+				if (iconPause) iconPause.style.display = 'none';
+				if (label) label.textContent = 'Ouvir página';
+			}
+		}
+
+	function handleRateChange() {
+		if (!rateVal || !rateInput) return
+
+		const value = parseFloat(rateInput.value)
+		rateVal.textContent = value.toFixed(1).replace('.0','') + '×';
+
+		sessionStorage.setItem('rate', value+'')
+	}
+
+	function handlePitchChange() {
+		if (!pitchVal || !pitchInput) return
+
+		const value = parseFloat(pitchInput.value)
+		pitchVal.textContent = value.toFixed(1).replace('.0','') + '×';
+
+		sessionStorage.setItem('pitch', value+'')
+	}
+
+		// Toggle play/pause
+		toggle?.addEventListener('click', () => {
+			if (!isPlaying && !isPaused) {
+				start();
+			} else if (isPlaying && !isPaused) {
+				pause();
+			} else if (isPaused) {
+				resume();
+			}
+		});
+
+		stopBtn?.addEventListener('click', stop);
+
+		rateInput?.addEventListener('input', handleRateChange);
+		const savedRate = sessionStorage.getItem('rate')
+		if (savedRate && rateInput) {
+			rateInput.value = savedRate
+			handleRateChange()
+		}
+
+		pitchInput?.addEventListener('input', handlePitchChange);
+		const savedPitch = sessionStorage.getItem('pitch')
+		if (savedPitch && pitchInput) {
+			pitchInput.value = savedPitch
+			handlePitchChange()
+		}
+
+		// Stop if user navigates away (SPA)
+		document.addEventListener('astro:before-swap', stop);
+		window.addEventListener('beforeunload', stop);
+	})();
+</script>
