@@ -75,6 +75,11 @@ export default defineConfig({
 							autogenerate: { directory: 'referencia/contratos' },
 							collapsed: true,
 						},
+						{
+							label: 'Outros',
+							autogenerate: { directory: 'referencia/outros' },
+							collapsed: true,
+						},
 						{ label: 'PseudoWired', slug: 'referencia/pseudowired' },
 					],
 				}, {
