@@ -1,6 +1,6 @@
 ---
 title: Tabela de Classificação
-description: a
+description: Tabela de Classificação
 sidebar:
   badge:
     text: RASCUNHO

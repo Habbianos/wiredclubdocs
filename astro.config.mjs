@@ -25,7 +25,8 @@ export default defineConfig({
 			},
 			social: [
 				{ icon: 'external', label: 'Website', href: 'https://wiredclub.com.br/' },
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/wiredclub/docs' }
+				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/wiredclub' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/wiredclub/docs' },
 			],
 			sidebar: [
 				{
@@ -37,9 +38,30 @@ export default defineConfig({
 				}, {
 					label: 'Referência',
 					items: [
-						{ label: 'Glossário de Termos', slug: 'referencia/glossario' },
-						{ label: 'Tipos de Wired', slug: 'referencia/tipos-de-wireds' },
-						{ label: 'Configurando Wireds', slug: 'referencia/configurando-wireds' },
+						{
+							label: 'Glossário de Termos',
+							slug: 'referencia/glossario',
+							badge: {
+								text: "Novo",
+								variant: "tip"
+							},
+						},
+						{
+							label: 'Tipos de Wired',
+							slug: 'referencia/tipos-de-wireds',
+							badge: {
+								text: "Novo",
+								variant: "tip"
+							},
+						},
+						{
+							label: 'Configurando Wireds',
+							slug: 'referencia/configurando-wireds',
+							badge: {
+								text: "Novo",
+								variant: "tip"
+							},
+						},
 						{
 							label: 'Ativadores',
 							autogenerate: { directory: 'referencia/ativadores' },
@@ -80,7 +102,14 @@ export default defineConfig({
 							autogenerate: { directory: 'referencia/outros' },
 							collapsed: true,
 						},
-						{ label: 'PseudoWired', slug: 'referencia/pseudowired' },
+						{
+							label: 'PseudoWired',
+							slug: 'referencia/pseudowired',
+							badge: {
+								text: "Novo",
+								variant: "tip"
+							},
+						},
 					],
 				}, {
 					label: 'Sobre Nós',
