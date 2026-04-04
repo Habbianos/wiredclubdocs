@@ -117,6 +117,7 @@ export type ConditionInfobox = z.infer<typeof ConditionInfoboxBaseSchema>;
 export type AddonInfobox = z.infer<typeof AddOnInfoboxBaseSchema>;
 export type WiredInfobox = z.infer<typeof WiredInfoboxSchema>;
 export type WiredInfoboxType = WiredInfobox["type"];
+export type CompleteInfobox = z.infer<typeof CompleteInfoboxSchema>;
 
 export const collections = {
 	docs: defineCollection({

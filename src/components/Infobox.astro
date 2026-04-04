@@ -4,6 +4,7 @@ import type {
 	WiredInfobox,
 	TriggerInfobox,
 	WiredInfoboxType,
+	CompleteInfobox,
 } from "../content.config";
 
 import {
@@ -12,7 +13,12 @@ import {
 	getFurniIcon,
 } from "../utils/furniImages";
 
-const { infobox } = Astro.locals.starlightRoute.entry.data;
+let infobox: CompleteInfobox | undefined;
+try {
+	infobox = Astro.locals.starlightRoute.entry.data.infobox;
+} catch {
+	return;
+}
 
 // Respeita o flag `hide`
 if (!infobox || infobox.hide) return;
