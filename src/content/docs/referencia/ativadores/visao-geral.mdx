@@ -10,6 +10,7 @@ sidebar:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import loadDataByInfoboxType from "../../../../utils/loadData.ts";
 
 {/* exemplo para o infobox: https://github.com/withastro/docs/blob/main/src/components/starlight/TableOfContents.astro */}
 
@@ -33,3 +34,15 @@ Quando um evento acontece, o Ativador não apenas dispara a pilha, mas ele tamb�
 Essa informação é repassada automaticamente para os Efeitos na pilha. É por causa da Fonte de Gatilho que o efeito "Teleportar para Mobi" sabe exatamente quem ele deve teleportar, sem que você precise programar o nome do usuário manualmente.
 
 ## Lista Completa
+
+{await loadDataByInfoboxType("Ativador").then(result => (
+  <ul>
+    {result.map(entry => (
+      <li key={entry.data.infobox.classname}>
+        <a href={`/docs/referencia/ativadores/${entry.data.infobox.classname}`}>
+          {entry.data.infobox.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+))}

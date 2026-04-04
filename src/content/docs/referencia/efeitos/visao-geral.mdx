@@ -9,6 +9,8 @@ sidebar:
     variant: tip
 ---
 
+import loadDataByInfoboxType from "../../../../utils/loadData.ts";
+
 ## O que é um Efeito?
 
 Os Efeitos são os componentes que realizam ações físicas no quarto quando executados. Eles são o "O que" da automação e funcionam como os atuadores que executam as tarefas específicas. Você consegue identifiá-los facilmente pois todos possuem a cor predominante **prateada** (ou cinza escuro se for sua versão negativa).
@@ -45,3 +47,15 @@ Afetam o comportamento do sistema Wired, como:
 Alguns Efeitos possuem versões negativas (com cor preta), que realizam a ação inversa. Em outras palavras, esses Efeitos são executados caso as Condições não permitam a execução natural da pilha. Em linguagens de programação gerais, essa lógica é encontrada nos blocos lógicos "SENÃO": `SE <condições> ENTÃO <efeitos> SENÃO <efeitos negativos> FIM`.
 
 ## Lista Completa
+
+{await loadDataByInfoboxType("Efeito").then(result => (
+  <ul>
+    {result.map(entry => (
+      <li key={entry.data.infobox.classname}>
+        <a href={`/docs/referencia/efeitos/${entry.data.infobox.classname}`}>
+          {entry.data.infobox.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+))}

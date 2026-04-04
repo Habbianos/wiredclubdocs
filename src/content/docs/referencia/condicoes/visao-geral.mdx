@@ -10,6 +10,7 @@ sidebar:
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
+import loadDataByInfoboxType from "../../../../utils/loadData.ts";
 
 ## O que é uma Condição?
 
@@ -62,3 +63,15 @@ Algumas Condições possuem versões **negativas** (com cor preta), que realizam
 Use-as quando precisar rejeitar algo ao invés de aceitar.
 
 ## Lista Completa
+
+{await loadDataByInfoboxType("Condição").then(result => (
+  <ul>
+    {result.map(entry => (
+      <li key={entry.data.infobox.classname}>
+        <a href={`/docs/referencia/condicoes/${entry.data.infobox.classname}`}>
+          {entry.data.infobox.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+))}
