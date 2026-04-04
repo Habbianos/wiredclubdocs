@@ -20,6 +20,8 @@ const FurniInfoboxBaseSchema = BasicInfoboxSchema.extend({
 	classname: z.string(),
 	name: z.string().describe("Nome oficial do mobi"),
 	product_name: z.string().optional().describe("Nome oficial do mobi no catálogo"),
+	price: z.number().optional().describe("Preço em créditos no catálogo"),
+	// Se houver a necessidade de incluir outros tipos de moedas como diamantes ou duckets, podemos adicionar campos adicionais aqui ou criar um campo mais genérico para múltiplas moedas.
 	description: z
 		.string()
 		.optional()

@@ -220,6 +220,13 @@ if (wired && "classname" in wired && wired.classname) {
 						</div>
 					)}
 
+					{"price" in wired && wired.price && (
+						<div class="ib-row">
+							<dt>Preço</dt>
+							<dd>{wired.price}c</dd>
+						</div>
+					)}
+
 					{"release_date" in wired && wired.release_date && (
 						<div class="ib-row">
 							<dt>Lançamento</dt>
