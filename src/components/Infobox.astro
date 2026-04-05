@@ -13,6 +13,8 @@ import {
 	getFurniIcon,
 } from "../utils/furniImages";
 
+import setinha from "../assets/setinha.gif";
+
 let infobox: CompleteInfobox | undefined;
 try {
 	infobox = Astro.locals.starlightRoute.entry.data.infobox;
@@ -91,6 +93,7 @@ if (wired && "classname" in wired && wired.classname) {
 	if (!infobox.image) {
 		infobox.image = [
 			getFurniImage(wired.classname, wired.revision, infobox.image_direction),
+			setinha.src,
 			getFurniAnimatedImage(wired.classname, wired.revision, infobox.image_direction, infobox.image_animated_state),
 		];
 		credits = "Imagens de mobis por HabCat";
@@ -178,6 +181,10 @@ if (wired && "classname" in wired && wired.classname) {
 						src={getFurniImage(wired.negative_classname, wired.negative_revision, infobox.image_direction)}
 						alt={`${infobox.title} (versão negativa)`}
 						class="ib-image"
+						loading="lazy"
+					/>
+					<img
+						src={setinha.src}
 						loading="lazy"
 					/>
 					<img
