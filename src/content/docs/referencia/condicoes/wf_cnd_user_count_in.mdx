@@ -8,15 +8,18 @@ sidebar:
     variant: note
 infobox:
   type: Condição
-  title: "CONDIÇÃO WIRED: Número de usuários no quarto"
+  title: Número de usuários no quarto
   revision: 63018
   classname: wf_cnd_user_count_in
   image_direction: 0
-  name: "CONDIÇÃO WIRED: Número de usuários no quarto"
+  name: Número de usuários no quarto
   description: Ativador é permitido se o número de usuários no quarto está dentro dos limites definidos. 
   availability: No catálogo e CA
   requires_furni: false
   additional_sources: []
+  has_negative_version: true
+  negative_revision: 50950
+  negative_classname: wf_cnd_not_user_count
 ---
 
 import Infobox from "../../../../components/Infobox.astro"

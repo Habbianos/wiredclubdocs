@@ -8,15 +8,17 @@ sidebar:
     variant: note
 infobox:
   type: Efeito
-  title: "Faz pilhas de wireds"
+  title: Faz pilhas de wireds
   revision: 50950
   classname: wf_act_call_stacks
   image_direction: 0
-  name: "Faz pilhas de wireds"
+  name: Faz pilhas de wireds
   description: "Esse Wired permite selecionar 5 pilhas de wireds para executar de um mesmo disparador, não importando as condições atuais ou disparadores."
   availability: No catálogo e CA
-  requires_furni: false
-  additional_sources: []
+  requires_furni: true
+  has_negative_version: true
+  negative_revision: 70536
+  negative_classname: wf_act_neg_call_stacks
 ---
 
 import Infobox from "../../../../components/Infobox.astro"

@@ -8,15 +8,18 @@ sidebar:
     variant: note
 infobox:
   type: Condição
-  title: "CONDIÇÃO WIRED: Membro da Equipe"
+  title: Membro da Equipe
   revision: 50950
   classname: wf_cnd_actor_in_team
   image_direction: 2
-  name: "CONDIÇÃO WIRED: Membro da Equipe"
+  name: Membro da Equipe
   description: A condição passa quando o avatar é um membro da equipe pré-definida
   availability: No catálogo e CA
   requires_furni: false
   additional_sources: []
+  has_negative_version: true
+  negative_revision: 50950
+  negative_classname: wf_cnd_not_in_team
 ---
 
 import Infobox from "../../../../components/Infobox.astro"
