@@ -11,6 +11,7 @@ sidebar:
 
 import { Aside } from '@astrojs/starlight/components';
 import loadDataByInfoboxType from "../../../../utils/loadData.ts";
+import { getFurniIcon } from '../../../../utils/furniImages.ts';
 
 {/* exemplo para o infobox: https://github.com/withastro/docs/blob/main/src/components/starlight/TableOfContents.astro */}
 
@@ -39,6 +40,7 @@ Essa informação é repassada automaticamente para os Efeitos na pilha. É por 
   <ul>
     {result.map(entry => (
       <li key={entry.data.infobox.classname}>
+        <img src={getFurniIcon(entry.data.infobox.classname, entry.data.infobox.revision)} alt={entry.data.infobox.name} />
         <a href={`/docs/referencia/ativadores/${entry.data.infobox.classname}`}>
           {entry.data.infobox.name}
         </a>
